@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "List Users";
+    Layout = "_PanelLayout";
+
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Users</h1>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal">Create</button>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Panel/">Panel</a></li>
+                        <li class="breadcrumb-item active">Users</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Convertations Case # @ViewBag.CaseId</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Conversations are loaded here -->
+                            <div class="direct-chat-messages">
+                                <!-- Message. Default to the left -->
+                                <div class="direct-chat-msg">
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-timestamp pull-left">23 Jan 2:00 pm</span>
+                                    </div>
+                                    <!-- /.direct-chat-info -->
+                                    <img class="direct-chat-img" src="~/lib/adminlte/img/user1-128x128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+                                    <div class="direct-chat-text">
+                                        Ada yang bisa dibantu?
+                                    </div>
+                                    <!-- /.direct-chat-text -->
+                                </div>
+                                <!-- /.direct-chat-msg -->
+                                <!-- Message to the right -->
+                                <div class="direct-chat-msg right">
+                                    <div class="direct-chat-info clearfix right">
+                                        <span class="direct-chat-timestamp right">23 Jan 2:05 pm</span>
+                                    </div>
+                                    <!-- /.direct-chat-info -->
+                                    <img class="direct-chat-img" src="~/lib/adminlte/img/user3-128x128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+                                    <div class="direct-chat-text">
+                                        Ada masalah di Login
+                                    </div>
+                                    <!-- /.direct-chat-text -->
+                                </div>
+                                <!-- /.direct-chat-msg -->
+                            </div>
+                            <!--/.direct-chat-messages-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

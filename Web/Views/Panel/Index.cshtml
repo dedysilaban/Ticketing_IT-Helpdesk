@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Chart";
+    Layout = "_PanelLayout";
+}
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Panel/">Panel</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="row">
+            @if (ViewBag.Role == "Admin")
+            {
+            <div class="col mb-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 col-lg-7 order-md-1 pt-8"><img class="img-fluid" src="https://t4.ftcdn.net/jpg/01/58/21/69/360_F_158216984_zSFxdd273rSrPmwnsK1mwukR5c2N0zWq.jpg" alt="" /></div>
+                            <div class="col-md-7 col-lg-5 text-center text-md-start pt-5 pt-md-9">
+                                <h3 class="mb-4 display-2 fw-bold" style="font-family:'Times New Roman'">Hallo, @ViewBag.Name</h3>
+                                <div class="mb-4 display-2 fw-bold" style="font-family:Verdana">@ViewBag.Role</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+            else
+            {
+                <div class="col mb-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-5 col-lg-7 order-md-1 pt-8"><img class="img-fluid" src="https://t4.ftcdn.net/jpg/01/58/21/69/360_F_158216984_zSFxdd273rSrPmwnsK1mwukR5c2N0zWq.jpg" alt="" /></div>
+                                <div class="col-md-7 col-lg-5 text-center text-md-start pt-5 pt-md-9">
+                                    <h3 class="mb-4 display-2 fw-bold" style="font-family:'Times New Roman'">Hallo, @ViewBag.Name</h3>
+                                    <div class="mb-4 display-2 fw-bold" style="font-family:Verdana">@ViewBag.Role</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+<!-- /.content-wrapper -->
+@section scripts {
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="~/js/Chart.js" asp-append-version="true"></script>
+}

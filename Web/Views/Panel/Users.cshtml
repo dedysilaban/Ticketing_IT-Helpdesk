@@ -1,0 +1,261 @@
+﻿@{
+    ViewData["Title"] = "List Users";
+    Layout = "_PanelLayout";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Users</h1>
+                    <span title="Create User" data-toggle="tooltip" data-placement="right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal" onclick="openCreateUser()"><i class="fas fa-edit"></i></button></span>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Panel/">Panel</a></li>
+                        <li class="breadcrumb-item active">Users</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">List Users</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="tableUsers" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>BirthDate</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
+                                        <th>Department</th>
+                                        <th>Role</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<div id="createModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="needs-validation" novalidate id="formCreate" action="javascript:insertUser()">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateEmployeeId">EmployeeId</label>
+                            <input type="text" class="form-control" id="inputCreateEmployeeId" placeholder="EmployeeId" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateName">Name</label>
+                            <input type="text" class="form-control" id="inputCreateName" placeholder="Name" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateEmail">Email</label>
+                            <input type="email" class="form-control" id="inputCreateEmail" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                Please enter right email format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreatePassword">Password</label>
+                            <input type="password" class="form-control" id="inputCreatePassword" placeholder="Password" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateBirthDate">Birth Date</label>
+                            <input type="date" class="form-control" id="inputCreateBirthDate" placeholder="BirthDate" required>
+                            <div class="invalid-feedback">
+                                Please enter right date format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreatePhone">Phone</label>
+                            <input type="text" class="form-control" id="inputCreatePhone" placeholder="Phone" required>
+                            <div class="invalid-feedback">
+                                Please enter right phone format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateRole">Role</label>
+                            <select class="form-control" id="inputCreateRole" placeholder="Role" required>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please enter right role option.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputCreateAddress">Address</label>
+                            <input type="text" class="form-control" id="inputCreateAddress" placeholder="Address" required>
+                            <div class="invalid-feedback">
+                                Please enter right address format.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="inputCreateDepartment">Department</label>
+                            <input type="text" class="form-control" id="inputCreateDepartment" placeholder="Department" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="editModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="javascript:editUser()">
+                <div class="modal-body" id="editModal">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                           
+                            <label for="inputCreateEmployeeId">Employee Id</label>
+                            <input type="text" class="form-control" id="EmployeeId" placeholder="Employee Id" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            
+                            <label for="inputCreateName">Name</label>
+                            <input type="text" class="form-control" id="Name" placeholder="Name" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateEmail">Email</label>
+                            <input type="email" class="form-control" id="Email" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                Please enter right email format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreatePassword">Password</label>
+                            <input type="password" class="form-control" id="Password" placeholder="Password" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateBirthDate">Birth Date</label>
+                            <input type="date" class="form-control" id="BirthDate" placeholder="BirthDate" required>
+                            <div class="invalid-feedback">
+                                Please enter right date format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreatePhone">Phone</label>
+                            <input type="text" class="form-control" id="Phone" placeholder="Phone" required>
+                            <div class="invalid-feedback">
+                                Please enter right phone format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateRole">Role</label>
+                            <select class="form-control" id="Role" placeholder="Role" required>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please enter right role option.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputCreateAddress">Address</label>
+                            <input type="text" class="form-control" id="Address" placeholder="Address" required>
+                            <div class="invalid-feedback">
+                                Please enter right address format.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="inputCreateDepartment">Department</label>
+                            <input type="text" class="form-control" id="Department" placeholder="Department" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        var viewBagUserId = '@ViewBag.EmployeeId';
+        var viewBagRoleId = '@ViewBag.RoleId';
+        var viewBagLevel = '@ViewBag.Level';
+        var viewBagName = '@ViewBag.Name';
+    </script>
+    <script src="~/js/usersList.js" asp-append-version="true"></script>
+}

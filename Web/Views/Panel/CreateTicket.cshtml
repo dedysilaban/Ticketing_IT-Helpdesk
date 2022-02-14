@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "List Users";
+    Layout = "_PanelLayout";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Ticket</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Panel/">Panel</a></li>
+                        <li class="breadcrumb-item active">Ticket</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Create Ticket</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="needs-validation" novalidate id="formCreate" action="javascript:createTicket()">
+                                <div class="form-row">
+                                    <div class="col-md-8 mb-3">
+                                        <input type="text" class="form-control" id="inputCreateUserId" placeholder="UserId" value="@ViewBag.EmployeeId" hidden required>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <label for="inputCreateDescription">Description</label>
+                                        <input type="text" class="form-control" id="inputCreateDescription" placeholder="Description" required>
+                                        <div class="invalid-feedback">
+                                            Please enter right string format.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="inputCreateCategory">Category</label>
+                                        <select class="form-control" id="inputCreateCategoryId" placeholder="Category" required>
+                                            <option value="1">Login</option>
+                                            <option value="2">Register</option>
+                                            <option value="3">Menu</option>
+                                            <option value="4">Aplikasi</option>
+                                            <option value="5">Lainnya</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please enter right category option.
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary">Create</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section scripts {
+    <script src="~/js/ticket.js" asp-append-version="true"></script>
+    <script src="~/lib/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+}

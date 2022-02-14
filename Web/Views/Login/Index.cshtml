@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "_LoginLayout";
+}
+
+<div class="mb-4">
+    <h3>Sign In</h3>
+    <p class="mb-4">IT Support Helpdesk</p>
+</div>
+<form action="/Login/Auth" method="post">
+    <div class="form-group first">
+        <label for="email">Email</label>
+        <input type="email" name="Email" class="form-control">
+        @*<div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>*@
+    </div>
+    <div class="form-group last mb-4">
+        <label for="password">Password</label>
+        <input type="password" name="Password" class="form-control">
+        @*<div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>*@
+    </div>
+
+    <div class="d-flex mb-5 align-items-center">
+
+    </div>
+
+    <button type="submit" name="submit" class="btn btn-primary btn-block">Sign In</button>
+</form>
